@@ -7,7 +7,7 @@ RUN --mount=type=bind,from=octavia,source=/,target=/src/octavia,readwrite \
     --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
-        /src/octavia[redis] \
+        /src/octavia \
         /src/ovn-octavia-provider
 EOF
 
