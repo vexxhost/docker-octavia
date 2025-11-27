@@ -16,17 +16,17 @@ jobs:
       id-token: write
       packages: write
     steps:
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@2024.1
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/octavia
           ref: 041b0795972afe103ea802b47105f38ad45f65cb
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@2024.1
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/ovn-octavia-provider
           ref: 8f157246c2d13f5e093a69e1d41250e8f6d6301a
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@2024.1
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
         with:
           image-name: octavia
           build-contexts: |
