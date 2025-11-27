@@ -19,12 +19,12 @@ jobs:
       - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/octavia
-          ref: zed-eol
+          ref: zed-eol # zed-eol
 
       - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/ovn-octavia-provider
-          ref: zed-eol
+          ref: zed-eol # zed-eol
 
       - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
         with:
