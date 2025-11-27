@@ -3,14 +3,11 @@
 # Atmosphere-Rebuild-Time: 2024-06-25T22:49:25Z
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:bff09007027c2b6b908e2e970fe5cf06a4c025848e69bad73aa4970aff4978e2 AS build
-COPY --from=octavia --link . /src/octavia
-RUN git -C /src/octavia fetch --unshallow
 # renovate: name=openstack/ovn-octavia-provider repo=https://github.com/openstack/ovn-octavia-provider.git branch=master
 ARG OVN_OCTAVIA_PROVIDER_GIT_REF=df5a9804598efb4af9f7103b604a6988d0aeb004
 ADD --keep-git-dir=true https://github.com/openstack/ovn-octavia-provider.git#${OVN_OCTAVIA_PROVIDER_GIT_REF} /src/ovn-octavia-provider
 RUN git -C /src/ovn-octavia-provider fetch --unshallow
-ARG UV_CACHE_ID=uv-default
-RUN --mount=type=cache,id=${UV_CACHE_ID},target=/root/.cache/uv <<EOF bash -xe
+RUN --mount=type=bind,from=octavia,source=/,target=/src/octavia,readwrite <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/octavia[redis] \
