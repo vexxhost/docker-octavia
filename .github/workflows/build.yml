@@ -20,12 +20,12 @@ jobs:
       - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/octavia
-          ref: f6a639bb44127d9ba76b8c1cc72a4f16d75aeb6f # master
+          ref: bc9a76dc072254d0173185d9791551b4cd9c232b # master
 
       - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/ovn-octavia-provider
-          ref: df5a9804598efb4af9f7103b604a6988d0aeb004 # master
+          ref: 65a4e822ce88453cff171c1a5a38d328d23331d9 # master
 
       - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
         with:
