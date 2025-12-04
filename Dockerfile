@@ -5,6 +5,7 @@
 FROM ghcr.io/vexxhost/openstack-venv-builder:2023.2@sha256:4470a9b4881a1e559305022b01ded314b0229a5df3b553986987403ae417ed07 AS build
 RUN --mount=type=bind,from=octavia,source=/,target=/src/octavia,readwrite \
     --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
+sed -i 's/taskflow===.*/taskflow===5.5.0/g' /upper-constraints.txt
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/octavia[redis] \
