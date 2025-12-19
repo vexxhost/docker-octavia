@@ -25,7 +25,7 @@ jobs:
       - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/ovn-octavia-provider
-          ref: 49ab52ed36a78128543d7ccda57f89848f19b3e3 # stable/2025.2
+          ref: f9656235478dc9f95c47658b7280811acd8f94fc # stable/2025.2
 
       - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
         with:
