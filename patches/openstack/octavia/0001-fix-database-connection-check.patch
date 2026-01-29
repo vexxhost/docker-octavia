@@ -1,0 +1,37 @@
+From 6fb0d272c78a101fca395afd875241e43318434c Mon Sep 17 00:00:00 2001
+From: Doug Szumski <doug@stackhpc.com>
+Date: Wed, 22 Oct 2025 16:30:11 +0100
+Subject: [PATCH] Fix database connection check
+
+SQLAlchemy 2 arrived in the Dalmation release. This removed the concept
+of 'Connectionless execution'. See [1] for further details.
+
+Prior to this change, if the connection to the database was interrupted,
+the Octavia Health Worker would go into an infinite loop due to the removed
+method / catch all exception handler.
+
+[1] https://docs.sqlalchemy.org/en/20/changelog/migration_20.html#migration-20-implicit-execution
+Closes-Bug: #2129562
+
+Change-Id: I5e5f3b8dc8b2a94de927c547b187f9634c572c27
+---
+ octavia/db/api.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/octavia/db/api.py b/octavia/db/api.py
+index 635df05..8b1b316 100644
+--- a/octavia/db/api.py
++++ b/octavia/db/api.py
+@@ -66,7 +66,8 @@ def wait_for_connection(exit_event):
+     while down and not exit_event.is_set():
+         try:
+             LOG.debug('Trying to re-establish connection to database.')
+-            get_engine().scalar(select([1]))
++            with get_engine().connect() as conn:
++                conn.execute(select(1))
+             down = False
+             LOG.debug('Connection to database re-established.')
+         except Exception:
+--
+2.39.5
+
