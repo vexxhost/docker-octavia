@@ -17,17 +17,17 @@ jobs:
       packages: write
       pull-requests: write
     steps:
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@9dc904e06dcde958bf8a0b3230715d32b9e3a85f # main
         with:
           repository: openstack/octavia
           ref: 041b0795972afe103ea802b47105f38ad45f65cb # stable/2024.1
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@9dc904e06dcde958bf8a0b3230715d32b9e3a85f # main
         with:
           repository: openstack/ovn-octavia-provider
           ref: 8f157246c2d13f5e093a69e1d41250e8f6d6301a # stable/2024.1
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@9dc904e06dcde958bf8a0b3230715d32b9e3a85f # main
         with:
           image-name: octavia
           build-contexts: |
