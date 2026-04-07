@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: © 2025 VEXXHOST, Inc.
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-FROM ghcr.io/vexxhost/openstack-venv-builder:2025.2@sha256:71e0c50ff26cd678a427f88af8ed9b29df3ae2df73b7369708053070529b29e9 AS build
+FROM ghcr.io/vexxhost/openstack-venv-builder:2025.2@sha256:023de2bc1a2a131b96895e80ad3b372c5fc3780a49ce20b163e6a6919ec34115 AS build
 RUN --mount=type=bind,from=octavia,source=/,target=/src/octavia,readwrite \
     --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
 uv pip install \
