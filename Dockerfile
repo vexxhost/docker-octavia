@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Atmosphere-Rebuild-Time: 2024-06-25T22:49:25Z
 
-FROM ghcr.io/vexxhost/openstack-venv-builder:2023.2@sha256:6e4ac0d61f0725c07ac421d730b866c7ec637b97526620d1ac38c48e2005cbf9 AS build
+FROM ghcr.io/vexxhost/openstack-venv-builder:2023.2@sha256:d575a3be01744e04192bee5175fa6154bd8c1b535e22f8299d4730dd04c6e345 AS build
 RUN --mount=type=bind,from=octavia,source=/,target=/src/octavia,readwrite \
     --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
 sed -i 's/taskflow===.*/taskflow===5.5.0/g' /upper-constraints.txt
