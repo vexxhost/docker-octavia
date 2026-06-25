@@ -25,17 +25,17 @@ jobs:
         with:
           egress-policy: audit
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@ee412cafe33e0d7d8b3bc7d0ca64c9f155e293c7 # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@0dcf370eb08b3f884992181348b8c41d7f66c10e # main
         with:
           repository: openstack/octavia
           ref: 9ff4683c8212e4c043af69f1b5ebadc21651dc58 # master
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@ee412cafe33e0d7d8b3bc7d0ca64c9f155e293c7 # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@0dcf370eb08b3f884992181348b8c41d7f66c10e # main
         with:
           repository: openstack/ovn-octavia-provider
           ref: 890b6266450916ddf9ef8c0a157f3fe4eb03e7a5 # master
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@ee412cafe33e0d7d8b3bc7d0ca64c9f155e293c7 # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@0dcf370eb08b3f884992181348b8c41d7f66c10e # main
         with:
           image-name: octavia
           build-contexts: |
