@@ -1,4 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>vexxhost/docker-atmosphere"]
+  "extends": ["local>vexxhost/docker-atmosphere"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update the pinned Octavia wheel",
+      "fileMatch": ["(^|/)Dockerfile$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\s+ARG OCTAVIA_VERSION=(?<currentValue>\\S+)"
+      ],
+      "versioningTemplate": "pep440"
+    }
+  ]
 }
