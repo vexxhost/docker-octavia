@@ -2,11 +2,12 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:2025.2@sha256:5528f59558327af1bfd74b440ddeeb112f5163ba234007e27fab82037da41192 AS build
-RUN --mount=type=bind,from=octavia,source=/,target=/src/octavia,readwrite \
-    --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
+ENV UV_INDEX=https://packages.vexxhost.com/pypi/atmosphere/simple/
+ARG OCTAVIA_VERSION=17.0.0+a8e.12.1
+RUN --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
-        /src/octavia[redis] \
+        "octavia[redis]==${OCTAVIA_VERSION}" \
         /src/ovn-octavia-provider
 EOF
 
