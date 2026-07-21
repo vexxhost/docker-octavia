@@ -33,8 +33,6 @@ jobs:
       - uses: vexxhost/docker-atmosphere/.github/actions/build-image@2b0040e59869e408a94f1e92e67fa47035c50336 # main
         with:
           image-name: octavia
-          build-args: |
-            UV_INDEX=${{ vars.UV_INDEX_URL }}
           build-contexts: |
             ovn-octavia-provider=openstack/ovn-octavia-provider
           push: ${{ github.event_name != 'pull_request' }}
