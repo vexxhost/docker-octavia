@@ -3,11 +3,12 @@
 # Atmosphere-Rebuild-Time: 2024-06-25T22:49:25Z
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:zed@sha256:35e9cf8869d8a45b00d84b53ae1fc531a9ad93a6286e720b6e19989ef684c6fd AS build
-RUN --mount=type=bind,from=octavia,source=/,target=/src/octavia,readwrite \
-    --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
+ENV UV_INDEX=https://packages.vexxhost.com/pypi/atmosphere/simple/
+ARG OCTAVIA_VERSION=11.0.3+a8e.4.3
+RUN --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
-        /src/octavia \
+        "octavia==${OCTAVIA_VERSION}" \
         /src/ovn-octavia-provider
 EOF
 
