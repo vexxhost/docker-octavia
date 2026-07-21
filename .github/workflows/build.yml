@@ -11,6 +11,9 @@ on:
 permissions:
   contents: read
 
+env:
+  OCTAVIA_VERSION: 18.0.0+a8e.3.1
+
 jobs:
   image:
     runs-on: ubuntu-latest
@@ -30,13 +33,13 @@ jobs:
           repository: openstack/ovn-octavia-provider
           ref: 890b6266450916ddf9ef8c0a157f3fe4eb03e7a5 # master
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@d87127d20ddb74d1760ba6af17db68945a37f835 # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@79be3331d9362131a646955c60feefceb1d7acf5 # main
         with:
           image-name: octavia
           build-args: |
             UV_INDEX=${{ vars.UV_INDEX_URL }}
+            OCTAVIA_VERSION=${{ env.OCTAVIA_VERSION }}
           build-contexts: |
             ovn-octavia-provider=openstack/ovn-octavia-provider
+          image-version: ${{ env.OCTAVIA_VERSION }}
           push: ${{ github.event_name != 'pull_request' }}
-          tag-rules: |
-            type=raw,value=main
