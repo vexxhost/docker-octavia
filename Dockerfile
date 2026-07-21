@@ -4,7 +4,6 @@
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:336ba4260920dd0c401f4c11023ebee4752e90e49ef63f9840fb5dde0d0b3a9b AS build
 ARG UV_INDEX
-# renovate: datasource=pypi depName=octavia
 ARG OCTAVIA_VERSION=18.0.0+a8e.3.1
 RUN --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
 uv pip install \
