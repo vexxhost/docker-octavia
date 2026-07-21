@@ -30,7 +30,7 @@ jobs:
           repository: openstack/ovn-octavia-provider
           ref: 890b6266450916ddf9ef8c0a157f3fe4eb03e7a5 # master
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@2dfa2fb47c1cc328b51043983b652e3c9bf62382 # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@2b0040e59869e408a94f1e92e67fa47035c50336 # main
         with:
           image-name: octavia
           build-args: |
