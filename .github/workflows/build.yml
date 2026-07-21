@@ -27,11 +27,6 @@ jobs:
 
       - uses: vexxhost/docker-atmosphere/.github/actions/checkout@2b0040e59869e408a94f1e92e67fa47035c50336 # main
         with:
-          repository: openstack/octavia
-          ref: 78d38afc126c37e2ec65859e8cfc770eb5457075 # master
-
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@2b0040e59869e408a94f1e92e67fa47035c50336 # main
-        with:
           repository: openstack/ovn-octavia-provider
           ref: 890b6266450916ddf9ef8c0a157f3fe4eb03e7a5 # master
 
@@ -39,6 +34,5 @@ jobs:
         with:
           image-name: octavia
           build-contexts: |
-            octavia=openstack/octavia
             ovn-octavia-provider=openstack/ovn-octavia-provider
           push: ${{ github.event_name != 'pull_request' }}
