@@ -3,7 +3,7 @@
 # Atmosphere-Rebuild-Time: 2024-06-25T22:49:25Z
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:336ba4260920dd0c401f4c11023ebee4752e90e49ef63f9840fb5dde0d0b3a9b AS build
-ENV UV_INDEX=https://packages.vexxhost.com/pypi/atmosphere/simple/
+ENV UV_INDEX=https://packages.vexxhost.com/pypi/openstack/simple/
 ARG OCTAVIA_VERSION=18.0.0+a8e.3.1
 RUN --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
 uv pip install \
