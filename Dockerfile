@@ -3,7 +3,7 @@
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:2025.2@sha256:704598314dcd0231fca7c0b9d9b4cf3ff9616a7bdf8305ace0dc7ffd114f5556 AS build
 ENV UV_INDEX=https://packages.vexxhost.com/pypi/openstack/simple/
-ARG OCTAVIA_VERSION=17.0.0+a8e.12.1
+ARG OCTAVIA_VERSION=17.0.0+a8e.20.1
 RUN --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
