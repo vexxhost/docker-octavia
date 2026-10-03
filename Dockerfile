@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Atmosphere-Rebuild-Time: 2024-06-25T22:49:25Z
 
-FROM ghcr.io/vexxhost/openstack-venv-builder:2023.2@sha256:80d0e3479c9d0d54325c1866e8e23e66867d013bf96899481760cf2e533fa109 AS build
+FROM ghcr.io/vexxhost/openstack-venv-builder:2023.2@sha256:b6f52f4aabf7cf24c36bbfbdcdf6feab7285caf2220d1eac9b973d49eef25313 AS build
 ENV UV_INDEX=https://packages.vexxhost.com/pypi/openstack/simple/
 ARG OCTAVIA_VERSION=13.0.1+a8e.1.4
 RUN --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
