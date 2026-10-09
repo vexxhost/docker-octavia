@@ -9,7 +9,8 @@ RUN --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia
 uv pip install \
     --constraint /upper-constraints.txt \
         "octavia[redis]==${OCTAVIA_VERSION}" \
-        /src/ovn-octavia-provider
+        /src/ovn-octavia-provider \
+        pyroute2
 EOF
 
 FROM ghcr.io/vexxhost/python-base:main@sha256:1c8db9b02f8ddd9419c36b9bad5f6a87d03a8bd20ae7f5a0f45879bedccc1187
