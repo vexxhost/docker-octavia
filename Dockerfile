@@ -12,7 +12,7 @@ uv pip install \
         /src/ovn-octavia-provider
 EOF
 
-FROM ghcr.io/vexxhost/python-base:2024.2@sha256:97c25863456092e5736ab568e0e31b19606d2e86eb83d45d74c9a5294c5b31ee
+FROM ghcr.io/vexxhost/python-base:2024.2@sha256:eeb7fc4cb6875aae019f3840f95f76686644c8aa13cc1d5ff2022903376061e2
 RUN \
     groupadd -g 42424 octavia && \
     useradd -u 42424 -g 42424 -M -d /var/lib/octavia -s /usr/sbin/nologin -c "Octavia User" octavia && \
