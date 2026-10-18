@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Atmosphere-Rebuild-Time: 2024-06-25T22:49:25Z
 
-FROM ghcr.io/vexxhost/openstack-venv-builder:2024.1@sha256:84fcbbc47e096d53fc43c0c66d19d6e39c0fc09e011fb306c0b9aaf2d45abe52 AS build
+FROM ghcr.io/vexxhost/openstack-venv-builder:2024.1@sha256:501d47ffb24685bd58ff56e9e38c026dc75692525f91a12463a0a3e4b4867bd7 AS build
 ENV UV_INDEX=https://packages.vexxhost.com/pypi/openstack/simple/
 ARG OCTAVIA_VERSION=14.0.2+a8e.16.2
 RUN --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
@@ -12,7 +12,7 @@ uv pip install \
         /src/ovn-octavia-provider
 EOF
 
-FROM ghcr.io/vexxhost/python-base:2024.1@sha256:cdda991a26956706d1d4e5a2cf16e36f87bbf2e06620a65a0173fa148b593bb5
+FROM ghcr.io/vexxhost/python-base:2024.1@sha256:24a5362fea2a9b6a6cfc3fea7f4d84f88643191ca489f8c37b79f0e544d1cb69
 RUN \
     groupadd -g 42424 octavia && \
     useradd -u 42424 -g 42424 -M -d /var/lib/octavia -s /usr/sbin/nologin -c "Octavia User" octavia && \
