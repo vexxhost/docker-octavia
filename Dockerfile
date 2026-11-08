@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: © 2025 VEXXHOST, Inc.
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-FROM ghcr.io/vexxhost/openstack-venv-builder:2025.2@sha256:f0d2169bd69ea53b8da5bfb2ccd3b769508cef0dede51d79598c75b910e6c1ec AS build
+FROM ghcr.io/vexxhost/openstack-venv-builder:2025.2@sha256:55159cd1d3c9830635eb77ea4f8f3b07ff48086d418906192b574bc00b4dda02 AS build
 ENV UV_INDEX=https://packages.vexxhost.com/pypi/openstack/simple/
 ARG OCTAVIA_VERSION=17.0.0+a8e.20.1
 RUN --mount=type=bind,from=ovn-octavia-provider,source=/,target=/src/ovn-octavia-provider,readwrite <<EOF bash -xe
